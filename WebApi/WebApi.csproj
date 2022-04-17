@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Applications\ActorOperations\Commands\" />
-    <Folder Include="Applications\ActorOperations\Queries\GetActorDetail\" />
+    <Folder Include="Applications\CustomerOperations\Queries\GetCustomers\" />
+    <Folder Include="Applications\CustomerOperations\Queries\GetCustomerDetail\" />
   </ItemGroup>
 
 </Project>
