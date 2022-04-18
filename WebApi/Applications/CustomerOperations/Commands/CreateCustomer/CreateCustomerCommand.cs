@@ -10,7 +10,7 @@ namespace WebApi.Applications.CustomerOperations.Commands.CreateCustomer
 {
     public class CreateCustomerCommand
     {
-        public CreateActorModel Model { get; set; }
+        public CreateCustomerModel Model { get; set; }
 
         private readonly IMovieStoreDbContext _context;
         private readonly IMapper _mapper;
@@ -33,7 +33,7 @@ namespace WebApi.Applications.CustomerOperations.Commands.CreateCustomer
         }
     }
 
-    public class CreateActorModel
+    public class CreateCustomerModel
     {
         public string Name { get; set; }
         public string Surname { get; set; }
