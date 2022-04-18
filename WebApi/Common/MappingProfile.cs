@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WebApi.Applications.ActorOperations.Commands.CreateActor;
 using WebApi.Applications.ActorOperations.Queries.GetActors;
 using WebApi.Applications.CustomerOperations.Commands.CreateCustomer;
+using WebApi.Applications.CustomerOperations.Queries.GetCustomers;
 using WebApi.Applications.DirectorOperations.Commands.CreateDirector;
 using WebApi.Applications.DirectorOperations.Queries.GetDirectorDetail;
 using WebApi.Applications.DirectorOperations.Queries.GetDirectors;
@@ -52,11 +53,14 @@ namespace WebApi.Common
             CreateMap<Actor, ActorDetailViewModel>()
                 .ForMember(dest => dest.MovieActors, opt => opt.MapFrom(src => src.MovieActors.Select(x => x.Movie.Name)));
 
-            CreateMap<CreateActorCommand, Actor>();
+            CreateMap<CreateActorModel, Actor>();
 
             //CUSTOMER
+            CreateMap<Customer, CustomerViewModel>()
+                .ForMember(dest => dest.FavoriteGenres, opt => opt.MapFrom(src => src.FavoriteGenres.Select(x => x.Genre.Name)))
+                .ForMember(dest => dest.BoughtMovies, opt => opt.MapFrom(src => src.BoughtMovies.Select(x => x.Movie.Name)));
 
-            CreateMap<CreateCustomerCommand, Customer>();
+            CreateMap<CreateCustomerModel, Customer>();
                  
         }
     }
