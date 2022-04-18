@@ -30,16 +30,16 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult GetActors()
         {
-            GetActorsQuery query = new GetActorsQuery(_context, _mapper);
+            GetActorsQuery query = new(_context, _mapper);
             return Ok(query.Handle());
         }
 
         [HttpGet("{id}")]
         public IActionResult GetActorDetails(int id)
         {
-            GetActorDetailQuery query = new GetActorDetailQuery(_context, _mapper);
+            GetActorDetailQuery query = new(_context, _mapper);
             query.ActorId = id;
-            GetActorDetailQueryValidator validator = new GetActorDetailQueryValidator();
+            GetActorDetailQueryValidator validator = new();
             validator.ValidateAndThrow(query);
             return Ok(query.Handle());
         }
@@ -47,9 +47,9 @@ namespace WebApi.Controllers
         [HttpPost]
         public IActionResult AddActor([FromBody] CreateActorModel model)
         {
-            CreateActorCommand command = new CreateActorCommand(_context,_mapper);
+            CreateActorCommand command = new(_context,_mapper);
             command.Model = model;
-            CreateActorCommandValidator validator = new CreateActorCommandValidator();
+            CreateActorCommandValidator validator = new();
             validator.ValidateAndThrow(command);
             command.Handle();
             return Ok("Aktör başarı ile eklendi");
@@ -58,9 +58,9 @@ namespace WebApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteActor(int id)
         {
-            DeleteActorCommand command = new DeleteActorCommand(_context);
+            DeleteActorCommand command = new(_context);
             command.ActorId = id;
-            DeleteActorCommandValidator validator = new DeleteActorCommandValidator();
+            DeleteActorCommandValidator validator = new();
             validator.ValidateAndThrow(command);
             command.Handle();
             return Ok("Aktör başarı ile silindi!!");
@@ -69,10 +69,10 @@ namespace WebApi.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateActor(int id, [FromBody] UpdateActorModel model)
         {
-            UpdateActorCommand command = new UpdateActorCommand(_context);
+            UpdateActorCommand command = new(_context);
             command.ActorId = id;
             command.Model = model;
-            UpdateActorCommandValidator validator = new UpdateActorCommandValidator();
+            UpdateActorCommandValidator validator = new();
             validator.ValidateAndThrow(command);
             command.Handle();
             return Ok("Aktör başarı ile güncellendi!!");

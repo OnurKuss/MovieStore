@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi.DbOperations;
+using WebApi.Entities;
 
 namespace WebApi.Applications.ActorOperations.Commands.CreateActor
 {
@@ -26,7 +27,9 @@ namespace WebApi.Applications.ActorOperations.Commands.CreateActor
             {
                 throw new InvalidOperationException("Aktor zaten mevcut");
             }
-            var act = _mapper.Map<CreateActorCommand>(actor);
+            actor = _mapper.Map<Actor>(Model);
+            _context.Actors.Add(actor);
+            _context.SaveChanges();
         }
     }
 
