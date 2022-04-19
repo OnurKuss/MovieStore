@@ -16,5 +16,6 @@ namespace WebApi.Entities
         public Movie Movie { get; set; }
         public decimal Price { get; set; }
         public DateTime OrderDate { get; set; }
+        public bool IsVisible { get; set; } = true;
     }
 }
