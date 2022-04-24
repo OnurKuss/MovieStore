@@ -14,6 +14,7 @@ using WebApi.Applications.MovieOperations.Commands.CreateMovie;
 using WebApi.Applications.MovieOperations.Queries.GetMovies;
 using WebApi.Applications.OrderOperations.Commands;
 using WebApi.Applications.OrderOperations.Queries;
+using WebApi.Applications.UserOperations.Commands.CreateUser;
 using WebApi.Entities;
 using static WebApi.Applications.ActorOperations.Queries.GetActorDetail.GetActorDetailQuery;
 using static WebApi.Applications.MovieOperations.Queries.GetMovieDetail.GetMovieDetailQuery;
@@ -70,7 +71,9 @@ namespace WebApi.Common
                 .ForMember(dest => dest.Movie, opt => opt.MapFrom(src => src.Movie.Name));
 
             CreateMap<CreateOrderModel, Order>();
-                 
+
+            //USER
+            CreateMap<CreateUserModel, User>();
         }
     }
 }
